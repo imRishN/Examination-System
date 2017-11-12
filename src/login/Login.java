@@ -6,6 +6,7 @@
 package login;
 
 import NewUser.NewUser;
+import StudentLogin.StudentLogin;
 
 /**
  *
@@ -137,7 +138,10 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        StudentLogin studentLogin= new StudentLogin();
+        studentLogin.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
