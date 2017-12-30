@@ -5,7 +5,11 @@
  */
 package StudentTest;
 
+import AdminLogin.AdminLogin;
 import Result.Result;
+import StudentLogin.StudentLogin;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  *
@@ -13,11 +17,31 @@ import Result.Result;
  */
 public class StudentTest extends javax.swing.JFrame {
 
+    BufferedReader br;
+    String data[];
+    String s;
+
     /**
      * Creates new form StudentTest
      */
     public StudentTest() {
+
         initComponents();
+
+        try {
+
+            this.br = new BufferedReader(new FileReader("Question Database.txt"));
+            s = br.readLine();
+
+            data = s.split(",");
+            jLabel2.setText(data[0]);
+            jRadioButton1.setText(data[1]);
+            jRadioButton2.setText(data[2]);
+            jRadioButton3.setText(data[3]);
+            jRadioButton4.setText(data[4]);
+
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -37,12 +61,13 @@ public class StudentTest extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examination System", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
-        jLabel1.setText("Q1. Question");
+        jLabel1.setText("Q.");
 
         jRadioButton1.setText("Option A");
 
@@ -58,6 +83,11 @@ public class StudentTest extends javax.swing.JFrame {
         jRadioButton4.setText("Option D");
 
         jButton1.setText("Next Question");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("End Test");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +95,8 @@ public class StudentTest extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,7 +109,10 @@ public class StudentTest extends javax.swing.JFrame {
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1)
-                    .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(115, 115, 115)
@@ -90,7 +125,9 @@ public class StudentTest extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(17, 17, 17)
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,14 +164,31 @@ public class StudentTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Result result=new Result();
+        Result result = new Result();
         result.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            s = br.readLine();
+
+            data = s.split(",");
+            jLabel2.setText(data[0]);
+            jRadioButton1.setText(data[1]);
+            jRadioButton2.setText(data[2]);
+            jRadioButton3.setText(data[3]);
+            jRadioButton4.setText(data[4]);
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +229,7 @@ public class StudentTest extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
