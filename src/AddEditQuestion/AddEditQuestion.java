@@ -6,12 +6,21 @@
 package AddEditQuestion;
 
 import AdminLogin.AdminLogin;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
  * @author rishab
  */
 public class AddEditQuestion extends javax.swing.JFrame {
+    
+    
+    String question;
+    String option1,option2,option3,option4;
+    boolean o1,o2,o3,o4;
 
     /**
      * Creates new form AddEditQuestion
@@ -115,25 +124,28 @@ public class AddEditQuestion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton1)
+                                    .addComponent(jRadioButton3)
+                                    .addComponent(jRadioButton2)
+                                    .addComponent(jRadioButton4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6)
+                                    .addComponent(jScrollPane5)
+                                    .addComponent(jScrollPane3)
+                                    .addComponent(jScrollPane4)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6)
-                            .addComponent(jScrollPane5)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4))))
-                .addContainerGap())
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,16 +212,34 @@ public class AddEditQuestion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        question=jTextPane5.getText().toString();
+        option1=jTextPane1.getText().toString();
+        option2=jTextPane2.getText().toString();
+        option3=jTextPane3.getText().toString();
+        option4=jTextPane4.getText().toString();
+        o1=jRadioButton1.isSelected();
+        o2=jRadioButton2.isSelected();
+        o3=jRadioButton3.isSelected();
+        o4=jRadioButton4.isSelected();
+        
+        try {
+            File f = new File("Question Database.txt");
+            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+            pw.append(question+","+option1+","+option2+","+option3+
+                    ","+option4+","+o1+","+o2+","+o3+","+o4+"\n");
+            pw.close();
+        } 
+        catch (Exception e) {}
         AdminLogin adminLogin=new AdminLogin();
         adminLogin.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         AdminLogin adminLogin=new AdminLogin();
         adminLogin.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

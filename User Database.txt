@@ -1,1 +1,2 @@
 Rishab Nahata,16NA10018,Student,8420885001,rishabnahata07@gmail.com,rishab25
+Batman,00000,Admin,0,batman@gotham.com,batman
