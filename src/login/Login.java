@@ -8,6 +8,7 @@ package login;
 import AdminLogin.AdminLogin;
 import NewUser.NewUser;
 import StudentLogin.StudentLogin;
+import java.io.*;
 
 /**
  *
@@ -168,41 +169,50 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String eMail=jTextField1.getText();
-        char password[]=jPasswordField1.getPassword();
-        if(!eMail.equals("")&&password.length!=0&&jComboBox1.getSelectedItem().
-                toString().equals("Student") )
-        {
-            StudentLogin studentLogin= new StudentLogin();
-            studentLogin.setVisible(true);
-            this.setVisible(false);
+        String eMail = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
+        String type = jComboBox1.getSelectedItem().toString();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("User Database.txt"));
+            String s = "";
+            while ((s = br.readLine()) != null) {
+                String data[] = new String[6];
+                data = s.split(",");
+                if (data[4].equals(eMail) && data[5].equals(password) && data[2].equals(type)) {
+                    if (type.equals("Student")) {
+                        StudentLogin studentLogin = new StudentLogin();
+                        studentLogin.getData(data);
+                        studentLogin.setVisible(true);
+                        this.dispose();
+                    } else {
+                        AdminLogin adminLogin = new AdminLogin();
+                        adminLogin.getData(data);
+                        adminLogin.setVisible(true);
+                        this.dispose();
+                    }
+                }
+            }
+
+        } catch (Exception e) {
         }
-        
-        if(!eMail.equals("")&&password.length!=0&&jComboBox1.getSelectedItem().
-                toString().equals("Admin") )
-        {
-            AdminLogin adminLogin= new AdminLogin();
-            adminLogin.setVisible(true);
-            this.setVisible(false);
-        }
-       
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        NewUser newUser=new NewUser();
+        NewUser newUser = new NewUser();
         newUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed

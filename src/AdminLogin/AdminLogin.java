@@ -13,12 +13,19 @@ import login.Login;
  * @author rishab
  */
 public class AdminLogin extends javax.swing.JFrame {
+    
+    String adminData[]=new String[6];
 
     /**
      * Creates new form AdminLogin
      */
     public AdminLogin() {
         initComponents();
+    }
+    
+    public void getData(String data[])
+    {
+        adminData=data;
     }
 
     /**
