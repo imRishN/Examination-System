@@ -26,7 +26,7 @@ public class AdminLogin extends javax.swing.JFrame {
     public void getData(String data[])
     {
         adminData=data;
-        jLabel4.setText(data[0]);
+        jLabel4.setText(adminData[0]);
     }
 
     /**
@@ -159,7 +159,7 @@ public class AdminLogin extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Login login=new Login();
         login.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

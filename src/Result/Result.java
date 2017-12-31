@@ -5,7 +5,15 @@
  */
 package Result;
 
+import AdminLogin.AdminLogin;
+import StudentLogin.StudentLogin;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import login.Login;
+import sun.security.x509.CertificateSubjectName;
 
 /**
  *
@@ -14,6 +22,8 @@ import login.Login;
 public class Result extends javax.swing.JFrame {
     
     int score;
+    String mName;
+    int rank;
 
     /**
      * Creates new form Result
@@ -22,10 +32,34 @@ public class Result extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void studentScore(int s)
-    {
-        score=s;
+    public void studentData(int s, String name) {
+        score = s;
+        mName = name;
+        rank = 1;
+        try {
+            File f = new File("Rank Database.txt");
+            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+            pw.append(mName + "," + score + "\n");
+            pw.close();
+        } catch (Exception e) {
+        }
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Rank Database.txt"));
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String data[] = new String[2];
+                data = line.split(",");
+                if (!data[0].equals(mName) && Integer.parseInt(data[1]) > score) {
+                    rank++;
+                }
+                
+            }
+            
+        } catch (Exception e) {
+        }
         jLabel4.setText(String.valueOf(score));
+        jLabel6.setText(String.valueOf(rank));
     }
 
     /**
@@ -134,7 +168,7 @@ public class Result extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Login login=new Login();
+        Login login = new Login();
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

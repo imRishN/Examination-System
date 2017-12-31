@@ -230,7 +230,7 @@ public class NewUser extends javax.swing.JFrame {
             jLabel8.setVisible(true);
             return;
         }
-        Scanner sc = new Scanner(System.in);
+        
         try {
             File f = new File("User Database.txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));

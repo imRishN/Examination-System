@@ -1,3 +1,4 @@
 Who is Dark Knight?,Superman,Batman,Wonder Woman,Aquaman,false,true,false,false
 Who is most powerful Superhero?,Superman,Batman,Ironman,Goku,false,true,false,false
 Which house do Jon Snow belong?,Baratheon,Lannisters,Targaryen,Stark,false,false,true,false
+Who defeated superman?,Lex Luthor,Diana,Doomsday,Batman,false,false,false,true

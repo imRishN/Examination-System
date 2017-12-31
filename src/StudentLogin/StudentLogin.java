@@ -166,6 +166,7 @@ public class StudentLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         StudentTest studentTest=new StudentTest();
+        studentTest.getName(studentData[0]);
         studentTest.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -174,7 +175,7 @@ public class StudentLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login login=new Login();
         login.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
   
     /**
