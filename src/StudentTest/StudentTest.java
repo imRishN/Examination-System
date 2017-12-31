@@ -20,6 +20,7 @@ public class StudentTest extends javax.swing.JFrame {
     BufferedReader br;
     String data[];
     String s;
+    int score;
 
     /**
      * Creates new form StudentTest
@@ -27,6 +28,7 @@ public class StudentTest extends javax.swing.JFrame {
     public StudentTest() {
 
         initComponents();
+        score = 0;
 
         try {
 
@@ -165,6 +167,7 @@ public class StudentTest extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Result result = new Result();
+        result.studentScore(score);
         result.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -175,9 +178,22 @@ public class StudentTest extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+
         try {
+            if (String.valueOf(jRadioButton1.isSelected()).equals(data[5])
+                    && String.valueOf(jRadioButton2.isSelected()).equals(data[6])
+                    && String.valueOf(jRadioButton3.isSelected()).equals(data[7])
+                    && String.valueOf(jRadioButton4.isSelected()).equals(data[8])) {
+                score++;
+
+            }
 
             s = br.readLine();
+            if (s == null) {
+                jButton1.setVisible(false);
+                jButton2.setText("Submit");
+                return;
+            }
 
             data = s.split(",");
             jLabel2.setText(data[0]);

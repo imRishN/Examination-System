@@ -12,12 +12,20 @@ import login.Login;
  * @author rishab
  */
 public class Result extends javax.swing.JFrame {
+    
+    int score;
 
     /**
      * Creates new form Result
      */
     public Result() {
         initComponents();
+    }
+    
+    public void studentScore(int s)
+    {
+        score=s;
+        jLabel4.setText(String.valueOf(score));
     }
 
     /**
@@ -128,7 +136,7 @@ public class Result extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Login login=new Login();
         login.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

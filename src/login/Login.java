@@ -185,7 +185,7 @@ public class Login extends javax.swing.JFrame {
                         studentLogin.getData(data);
                         studentLogin.setVisible(true);
                         this.dispose();
-                    } else {
+                    } else if(type.equals("Admin")){
                         AdminLogin adminLogin = new AdminLogin();
                         adminLogin.getData(data);
                         adminLogin.setVisible(true);
